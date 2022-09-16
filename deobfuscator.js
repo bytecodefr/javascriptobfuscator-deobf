@@ -31,5 +31,5 @@ for(let i=0;i<strings.length;i++) {
 jsCode = jsCode.split("\n").slice(1).join('\n');
 
 console.log("Cleaned code!\n");
-console.log("Deobfuscated, check deobfuscated.js");
-fs.writeFileSync("deobfuscated.js","// Deobfuscated by Avian!\n// I apologize for variables looking like shit\n\n"+jsCode);
+fs.writeFileSync("output.js","// Deobfuscated by Avian!\n// I apologize for variables looking like shit\n\n"+jsCode);
+console.log("Deobfuscated, check output.js");

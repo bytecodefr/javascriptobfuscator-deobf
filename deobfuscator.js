@@ -20,7 +20,7 @@ if(debug){console.log("String array name: "+stringsName);console.log("Strings:")
 
 //Beautifing the code
 jsCode = jsCode.replaceAll(stringsName,"deobfed"); // Replacing the string array with a new one, which is more readable and recognizable
-jsCode = jsCode.replaceAll("_0x","deobf_var_") // Replacing all annoying variables, with a new one (this is still annoying, but if you can fix it, please edit this repo)
+jsCode = jsCode.replaceAll("_0x","deobf_var_") // Replacing all annoying variables, with a new one (this is still annoying, but if you can fix it, please try to contribute this repo)
 jsCode = beautify(jsCode)
 
 

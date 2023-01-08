@@ -15,6 +15,7 @@ let stringsArray = jsCode.split(";")[0].split("=")[1]; // Get the string version
 let strings = eval('('+stringsArray+')'); // Converts the strings into an actual array we can use.
 let stringsName = jsCode.split(";")[0].split("=")[0].split("var ")[1]; // Gets the string array name
 
+
 if(debug){console.log("String array name: "+stringsName);console.log("Strings:");console.log(strings);console.log("Cleaning up...");} // Debug stuff
 
 
@@ -23,7 +24,11 @@ jsCode = jsCode.replaceAll(stringsName,"deobfed"); // Replacing the string array
 jsCode = jsCode.replaceAll("_0x","deobf_var_") // Replacing all annoying variables, with a new one (this is still annoying, but if you can fix it, please try to contribute this repo)
 jsCode = beautify(jsCode)
 
+let vars = /deobf_var_(\w+)/.exec(jsCode) // yeah regex
 
+for (let i = 1, i < vars.length; i++) {
+    jsCode.replaceAll(vars[i], i.toString());
+}
 
 for(let i=0;i<strings.length;i++) {
     let string = strings[i].replaceAll('"','\\"'); // Making sure we don't have a qoutation mark in our qoutation marks.

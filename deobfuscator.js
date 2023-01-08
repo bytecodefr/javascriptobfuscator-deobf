@@ -26,8 +26,10 @@ jsCode = beautify(jsCode)
 
 let vars = /deobf_var_(\w+)/.exec(jsCode) // yeah regex
 
-for (let i = 1; i < vars.length; i++) {
-    jsCode.replaceAll(vars[i], i.toString());
+if (vars != null) {
+    for (let i = 1; i < vars.length; i++) {
+        jsCode.replaceAll(vars[i], i.toString());
+    }
 }
 
 for(let i=0;i<strings.length;i++) {

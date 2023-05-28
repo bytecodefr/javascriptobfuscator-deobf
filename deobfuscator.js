@@ -56,7 +56,7 @@ let replaceHexChars = [
     '-', '_', '=', '+', '{', '}', '[', ']', ' ',
     '|', '\'', '"', ';', ':', '.', ',', '/', '?',
     '<', '>', '`', '0', '1', '2', '3', '4', '5',
-    '6', '7', '8', '9', '\t', '\r'
+    '6', '7', '8', '9', '\t', '\r', '\\', '\n'
 ]
 
 let hex = jsCode.matchAll(/\x(..)/g);
@@ -65,12 +65,13 @@ if (hex != null) {
     for (const match of hex) {
         let charcode = parseInt(match[1], 16);
         let char = String.fromCharCode(charcode);
-        
-        if (char == "\n") char = "\\n"
-        if (char == "\r") char = "\\r"
-        if (char == "\t") char = "\\t"
 
         if (replaceHexChars.includes(char)) {
+            if (char == "\\") char = "\\\\"
+            if (char == "\n") char = "\\n"
+            if (char == "\r") char = "\\r"
+            if (char == "\t") char = "\\t"
+
             jsCode = jsCode.replace("\\x" + match[1], char);
         }
     }

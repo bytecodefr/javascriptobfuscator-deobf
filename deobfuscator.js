@@ -31,8 +31,10 @@ let vars = jsCode.matchAll(/var_(\w+)/g) // yeah regex
 
 // making vars cool (example: var_1)
 if (vars != null) {
+    let count = 1;
     for (const match of vars) {
-        jsCode = jsCode.replaceAll(match[1], count);
+        count += 1;
+        jsCode = jsCode.replaceAll(match[1], count)
     }
 }
 
@@ -98,7 +100,6 @@ jsCode = beautify(jsCode)
 
 jsCode = jsCode.split("\n").slice(1).join('\n'); // Removing the strings array
 
-console.log(jsCode)
 
 console.log("Cleaned code!");
 

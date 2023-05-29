@@ -1,9 +1,16 @@
 // Deobfuscated by Avian!
-// I apologize for variables looking like shit
+// Variables look decent now.
 
 
-function add(deobf_var_e5b3x2, deobf_var_e5b3x3) {
-    return deobf_var_e5b3x2 + deobf_var_e5b3x3
+function NewObject(var_2) {
+    var var_3 = 0;
+    this.SayHello = function(var_4) {
+        var_3++;
+        alert(var_2 + var_4)
+    };
+    this.GetCount = function() {
+        return var_3
+    }
 }
-let result = add(1, 5);
-console["log"](result)
+var obj = new NewObject("Message : ");
+obj.SayHello("You are welcome.")
